@@ -11,11 +11,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         multiplier = PlayerPrefs.GetInt("multiplier", 1);
         money = PlayerPrefs.GetInt("money", 0);
     }
 
     public void Update(){
+        // Debug.Log("GameManager update");
         if(Input.GetKeyDown(KeyCode.R)) {
             PlayerPrefs.DeleteAll();
         }
