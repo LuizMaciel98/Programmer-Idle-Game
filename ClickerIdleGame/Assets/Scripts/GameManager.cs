@@ -17,10 +17,10 @@ public class GameManager : MonoBehaviour
                 UpgradeButtonController upgradeButton = button.GetComponent<UpgradeButtonController>();
                 if(upgradeButton != null && upgradeButton.isIddleGain){
                     result += upgradeButton.totalPurchased * upgradeButton.upgradeIncrease;
-                    Debug.Log(button.name + " iddleGain: " + upgradeButton.totalPurchased * upgradeButton.upgradeIncrease);
+                    //Debug.Log(button.name + " iddleGain: " + upgradeButton.totalPurchased * upgradeButton.upgradeIncrease);
                 }
             }
-            Debug.Log(" iddleGain " + result);
+            //Debug.Log(" iddleGain " + result);
 
             return result;
         }

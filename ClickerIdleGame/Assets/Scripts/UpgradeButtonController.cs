@@ -80,9 +80,9 @@ public class UpgradeButtonController : MonoBehaviour {
     }
 
     private void saveTotalPurchased(){
-        Debug.Log("saveTotalPurchased");
+        //Debug.Log("saveTotalPurchased");
         totalPurchased += 1;
-        Debug.Log("totalPurchased: " + totalPurchased);
+        //Debug.Log("totalPurchased: " + totalPurchased);
         PlayerPrefs.SetInt(upgradeButton.name, totalPurchased);
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
@@ -16,7 +17,7 @@ public class Game : MonoBehaviour {
     }
 
     void Start() {
-        // LoadUpgradesTotal();
+
     }
 
     void Update() {

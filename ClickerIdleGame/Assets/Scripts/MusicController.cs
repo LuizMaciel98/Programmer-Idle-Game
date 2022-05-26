@@ -15,15 +15,4 @@ public class MusicController : MonoBehaviour {
         }
     }
 
-    // void Start() {
-    //     selectedToggle = GetComponent<Toggle>();
-    //     selectedToggle.onValueChanged.AddListener(delegate {
-    //         ToggleValueChangedOccured(selectedToggle);
-    //         });
-    // }
-
-    // void ToggleValueChangedOccured(Toggle tglValue) {
-    //     Debug.Log("your current toggle state is: " + tglValue.isOn);
-    // }
-
 }
