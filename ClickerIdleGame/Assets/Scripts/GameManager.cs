@@ -5,22 +5,20 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
-    public static float money;
-    public static float clickPower;
-    public static float iddleGain {
+    public static float Money;
+    public static float ClickPower;
+    public static float IddleGain {
         get {
             float result = 0;
 
             var buttonObject = FindObjectsOfType<Button>();
             for(int i = 0; i < buttonObject.Length; i ++){
                 var button = buttonObject[i];
-                UpgradeButtonController upgradeButton = button.GetComponent<UpgradeButtonController>();
-                if(upgradeButton != null && upgradeButton.isIddleGain){
-                    result += upgradeButton.totalPurchased * upgradeButton.upgradeIncrease;
-                    //Debug.Log(button.name + " iddleGain: " + upgradeButton.totalPurchased * upgradeButton.upgradeIncrease);
+                UpgradeButtonController UpgradeButton = button.GetComponent<UpgradeButtonController>();
+                if(UpgradeButton != null && UpgradeButton.IsIddleGain){
+                    result += UpgradeButton.TotalPurchased * UpgradeButton.UpgradeIncrease;
                 }
             }
-            //Debug.Log(" iddleGain " + result);
 
             return result;
         }
@@ -28,25 +26,19 @@ public class GameManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
-        
-        clickPower = PlayerPrefs.GetFloat("clickPower", 1);
-        money = PlayerPrefs.GetFloat("money", 0);
+        Money = SaveManager.LoadMoney();
+        ClickPower = SaveManager.LoadClickPower();
     }
 
     public void Update() {
 
-        if(iddleGain > 0){
-            money += iddleGain * Time.deltaTime;
-            GameManager.SaveMoney();
+        if(IddleGain > 0) {
+            Money += IddleGain * Time.deltaTime;
+            SaveManager.SaveMoney();
         }
 
         if(Input.GetKeyDown(KeyCode.R)) {
             PlayerPrefs.DeleteAll();
         }
-    }
-
-    public static void SaveMoney() {
-        PlayerPrefs.SetFloat("money", GameManager.money);
-        PlayerPrefs.SetFloat("clickPower", GameManager.clickPower);
     }
 }

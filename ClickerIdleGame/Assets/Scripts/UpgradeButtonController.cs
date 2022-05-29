@@ -4,28 +4,28 @@ using UnityEngine;
 
 public class UpgradeButtonController : MonoBehaviour {
 
-    public bool isIddleGain;
-    public Button upgradeButton;
-    public Text upgradeCostText;
-    public Text upgradeIncreaseText;
+    public bool IsIddleGain;
+    public Button UpgradeButton;
+    public Text UpgradeCostText;
+    public Text UpgradeIncreaseText;
 
-    public int upgradeBaseIncrease;
-    public int upgradeBaseCost;
+    public int UpgradeBaseIncrease;
+    public int UpgradeBaseCost;
 
-    public int totalPurchased;
+    public int TotalPurchased;
 
     //Later this can be increased by some percent formula
-    private int upgradeCost {
-        get { return upgradeBaseCost; }
+    private int UpgradeCost {
+        get { return UpgradeBaseCost; }
     }
 
-    public int upgradeIncrease {
-        get { return upgradeBaseIncrease; }
+    public int UpgradeIncrease {
+        get { return UpgradeBaseIncrease; }
     }
 
     //Initialize the purchased for every upgrade button
     void Start () {
-        totalPurchased = PlayerPrefs.GetInt(upgradeButton.name, 0);
+        TotalPurchased = PlayerPrefs.GetInt(UpgradeButton.name, 0);
     }
 
     public void Buy() {
@@ -44,45 +44,45 @@ public class UpgradeButtonController : MonoBehaviour {
     //Turns button disabled or enabled by the current money
     private void handleButonInteractive(){
         if(canBuy()){
-            upgradeButton.interactable = true;
+            UpgradeButton.interactable = true;
         } else {
-            upgradeButton.interactable = false;
+            UpgradeButton.interactable = false;
         }
     }
 
     //Handle every buy actions like decrease money, increase click power, savew money
     private void handleBuyActions(){
 
-        GameManager.money -= upgradeCost;
+        GameManager.Money -= UpgradeCost;
 
-        if(isIddleGain){
+        if(IsIddleGain){
 
         } else {
-            GameManager.clickPower += upgradeBaseIncrease;
+            GameManager.ClickPower += UpgradeBaseIncrease;
         }
 
         saveTotalPurchased();
 
-        GameManager.SaveMoney();
+        SaveManager.SaveMoney();
     }
 
     private void handleButtonTextValues(){
-        upgradeCostText.text = "$ " + upgradeCost;
-        if(isIddleGain){
-            upgradeIncreaseText.text = "Iddle\n+" + upgradeIncrease + " /s";
+        UpgradeCostText.text = "$ " + UpgradeCost;
+        if(IsIddleGain){
+            UpgradeIncreaseText.text = "Iddle\n+" + UpgradeIncrease + " /s";
         } else {
-            upgradeIncreaseText.text = "Click\n+ " + upgradeIncrease;
+            UpgradeIncreaseText.text = "Click\n+ " + UpgradeIncrease;
         }
     }
 
     private bool canBuy(){
-        return GameManager.money >= upgradeCost;
+        return GameManager.Money >= UpgradeCost;
     }
 
     private void saveTotalPurchased(){
         //Debug.Log("saveTotalPurchased");
-        totalPurchased += 1;
+        TotalPurchased += 1;
         //Debug.Log("totalPurchased: " + totalPurchased);
-        PlayerPrefs.SetInt(upgradeButton.name, totalPurchased);
+        PlayerPrefs.SetInt(UpgradeButton.name, TotalPurchased);
     }
 }

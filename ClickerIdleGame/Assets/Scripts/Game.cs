@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class Game : MonoBehaviour {
 
-    public Text totalMoney;
-    public Text clickPower;
-    public Text iddleGain;
+    public Text TotalMoney;
+    public Text ClickPower;
+    public Text IddleGain;
     
 
     public void Increment() {
-        GameManager.money += GameManager.clickPower;
-        Debug.Log("GameManager.money: " + GameManager.money);
-        GameManager.SaveMoney();
+        GameManager.Money += GameManager.ClickPower;
+        Debug.Log("GameManager.money: " + GameManager.Money);
+        SaveManager.SaveMoney();
     }
 
     void Start() {
@@ -21,9 +21,9 @@ public class Game : MonoBehaviour {
     }
 
     void Update() {
-        totalMoney.text = "$: " + GameManager.money.ToString("F0");
-        clickPower.text = "Click power \n$: " + GameManager.clickPower.ToString("F0");
-        iddleGain.text = GameManager.iddleGain.ToString("F0") + "$ per second";
+        TotalMoney.text = "$: " + GameManager.Money.ToString("F0");
+        ClickPower.text = "Click power \n$: " + GameManager.ClickPower.ToString("F0");
+        IddleGain.text = GameManager.IddleGain.ToString("F0") + "$ per second";
     }
 
     // private void LoadUpgradesTotal() {
