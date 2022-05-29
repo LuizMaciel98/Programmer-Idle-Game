@@ -12,11 +12,24 @@ public class OfflineManager : MonoBehaviour {
     public Text GainInfoText;
 
     void Start() {
-        LoadOfflineProduction();
+        Debug.Log("OfflineManager.Start");
+        if(HasAnyIdleGains()){
+            OpenOffline();
+            LoadOfflineProduction();
+        }
     }
 
-    public void LoadOfflineProduction(){
-        
+    private void OpenOffline(){
+        Debug.Log("OpenOffline");
+        OfflinePopUp.gameObject.SetActive(true);
+    }
+
+    public void CloseOffline(){
+        OfflinePopUp.gameObject.SetActive(false);
+    }
+
+    private void LoadOfflineProduction() {
+
         string OfflineTimeString = PlayerPrefs.GetString("offlineTime");
 
         if(OfflineTimeString != null && OfflineTimeString != "") {
@@ -27,15 +40,11 @@ public class OfflineManager : MonoBehaviour {
             var Difference = CurrentTime.Subtract(OldTime);
             var RawTime = (float) Difference.TotalSeconds;
 
-            var OfflineTime = RawTime / 10;
-
-
-
             TimeSpan Timer = TimeSpan.FromSeconds(RawTime);
 
             AwayTimeText.text = $"You were away for\n<color=#00FFFF>{Timer:dd\\:hh\\:mm\\:ss}</color>";
 
-            float MoneyGains = OfflineTime * GameManager.IddleGain;
+            float MoneyGains = RawTime * GameManager.IddleGain;
 
             String MoneyGainsText = MoneyGains.ToString("F0");
 
@@ -43,13 +52,12 @@ public class OfflineManager : MonoBehaviour {
 
             GameManager.Money += MoneyGains;
             SaveManager.SaveMoney();
-            //BigDouble coinsGains;
         }
-
     }
 
-    public void CloseOffline(){
-        OfflinePopUp.gameObject.SetActive(false);
+    private bool HasAnyIdleGains(){
+        return GameManager.HasAnyIdleGains();
     }
+
 
 }

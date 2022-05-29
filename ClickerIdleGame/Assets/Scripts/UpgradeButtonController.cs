@@ -56,17 +56,22 @@ public class UpgradeButtonController : MonoBehaviour {
         GameManager.Money -= UpgradeCost;
 
         if(IsIddleGain){
-
+            HandleIdleGainIncrease();
         } else {
-            GameManager.ClickPower += UpgradeBaseIncrease;
+            HandleClickPowerIncrease();
         }
 
-        saveTotalPurchased();
+        SaveTotalPurchased();
 
         SaveManager.SaveMoney();
     }
 
-    private void handleButtonTextValues(){
+    private void HandleClickPowerIncrease() {
+        GameManager.ClickPower += UpgradeBaseIncrease;
+        SaveManager.SaveClickPower();
+    }
+
+    private void handleButtonTextValues() {
         UpgradeCostText.text = "$ " + UpgradeCost;
         if(IsIddleGain){
             UpgradeIncreaseText.text = "Iddle\n+" + UpgradeIncrease + " /s";
@@ -79,10 +84,14 @@ public class UpgradeButtonController : MonoBehaviour {
         return GameManager.Money >= UpgradeCost;
     }
 
-    private void saveTotalPurchased(){
+    private void SaveTotalPurchased(){
         //Debug.Log("saveTotalPurchased");
         TotalPurchased += 1;
         //Debug.Log("totalPurchased: " + totalPurchased);
         PlayerPrefs.SetInt(UpgradeButton.name, TotalPurchased);
+    }
+
+    private void HandleIdleGainIncrease(){
+        GameManager.UpdateIdleGain();
     }
 }

@@ -7,8 +7,11 @@ public class SaveManager : MonoBehaviour
 {
     public static void SaveMoney() {
         PlayerPrefs.SetFloat("money", GameManager.Money);
-        PlayerPrefs.SetFloat("clickPower", GameManager.ClickPower);
         PlayerPrefs.SetString("offlineTime", DateTime.Now.ToBinary().ToString());
+    }
+
+    public static void SaveClickPower() {
+        PlayerPrefs.SetFloat("clickPower", GameManager.ClickPower);
     }
 
     public static float LoadMoney() {
