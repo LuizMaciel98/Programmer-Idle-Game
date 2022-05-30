@@ -13,7 +13,7 @@ public class OfflineManager : MonoBehaviour {
 
     void Start() {
         Debug.Log("OfflineManager.Start");
-        if(HasAnyIdleGains()){
+        if(HasAnyIdleGains() && HasOfflineTime()){
             OpenOffline();
             LoadOfflineProduction();
         }
@@ -29,10 +29,7 @@ public class OfflineManager : MonoBehaviour {
     }
 
     private void LoadOfflineProduction() {
-
-        string OfflineTimeString = PlayerPrefs.GetString("offlineTime");
-
-        if(OfflineTimeString != null && OfflineTimeString != "") {
+        if(HasOfflineTime()) {
             var TempOfflineTime = Convert.ToInt64(PlayerPrefs.GetString("offlineTime"));
             var OldTime = DateTime.FromBinary(TempOfflineTime);
             var CurrentTime = DateTime.Now;
@@ -57,6 +54,12 @@ public class OfflineManager : MonoBehaviour {
 
     private bool HasAnyIdleGains(){
         return GameManager.HasAnyIdleGains();
+    }
+
+    private bool HasOfflineTime(){
+        string OfflineTimeString = PlayerPrefs.GetString("offlineTime");
+
+        return OfflineTimeString != null && OfflineTimeString != "";
     }
 
 
