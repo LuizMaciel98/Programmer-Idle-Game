@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using BreakInfinity;
 
 public class OfflineManager : MonoBehaviour {
 
@@ -41,7 +42,7 @@ public class OfflineManager : MonoBehaviour {
 
             AwayTimeText.text = $"You were away for\n<color=#00FFFF>{Timer:dd\\:hh\\:mm\\:ss}</color>";
 
-            float MoneyGains = RawTime * GameManager.IddleGain;
+            BigDouble MoneyGains = RawTime * GameManager.IddleGain;
 
             String MoneyGainsText = MoneyGains.ToString("F0");
 

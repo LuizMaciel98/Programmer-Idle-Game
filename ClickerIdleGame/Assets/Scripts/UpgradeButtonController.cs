@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using BreakInfinity;
 
 public class UpgradeButtonController : MonoBehaviour {
 
@@ -11,6 +12,7 @@ public class UpgradeButtonController : MonoBehaviour {
 
     public int UpgradeBaseIncrease;
     public int UpgradeBaseCost;
+    public int IncreaseBasePercentage;
 
     public int TotalPurchased;
 

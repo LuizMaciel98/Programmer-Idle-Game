@@ -1,16 +1,17 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine;
+using BreakInfinity;
 
 public class GameManager : MonoBehaviour
 {
 
-    private static float _IdleGain;
+    private static BigDouble _IdleGain;
     private static bool hasIdleBeenChecked = false;
 
-    public static float Money;
-    public static float ClickPower;
-    public static float IddleGain {
+    public static BigDouble Money;
+    public static BigDouble ClickPower;
+    public static BigDouble IddleGain {
         get {
             if(!hasIdleBeenChecked) {
                 _IdleGain = UpdateIdleGain();
@@ -39,9 +40,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static float UpdateIdleGain(){
+    public static BigDouble UpdateIdleGain(){
         Debug.Log("UpdateIdleGain");
-        float result = 0;
+        BigDouble result = 0;
 
         var buttonObject = FindObjectsOfType<Button>();
         for(int i = 0; i < buttonObject.Length; i ++){
