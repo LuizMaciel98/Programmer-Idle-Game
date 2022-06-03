@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Game : MonoBehaviour {
 
+    public ParticleSystem codeParticleSystem;
+    
     public Text TotalMoney;
     public Text ClickPower;
     public Text IddleGain;
@@ -14,6 +16,14 @@ public class Game : MonoBehaviour {
         GameManager.Money += GameManager.ClickPower;
         Debug.Log("GameManager.money: " + GameManager.Money);
         SaveManager.SaveMoney();
+
+
+        codeParticleSystem.Play();
+        var emitParams = new ParticleSystem.EmitParams();
+        // emitParams.startColor = Color.red;
+        // emitParams.startSize = 0.2f;
+        codeParticleSystem.Emit(emitParams, 1);
+        codeParticleSystem.Stop();
     }
 
     void Start() {

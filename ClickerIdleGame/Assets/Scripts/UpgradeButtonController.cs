@@ -10,18 +10,34 @@ public class UpgradeButtonController : MonoBehaviour {
     public Text UpgradeCostText;
     public Text UpgradeIncreaseText;
 
-    public int UpgradeBaseIncrease;
-    public int UpgradeBaseCost;
-    public int IncreaseBasePercentage;
+    public double UpgradeBaseIncrease;
+    public double UpgradeBaseCost;
+    public double UpgradeCostInterestRate;
 
     public int TotalPurchased;
 
     //Later this can be increased by some percent formula
-    private int UpgradeCost {
-        get { return UpgradeBaseCost; }
+    private BigDouble UpgradeCost {
+        get {
+            BigDouble result = UpgradeBaseCost;
+
+            double interestRate = UpgradeCostInterestRate/100;
+
+            // if(TotalPurchased != null && TotalPurchased > 0){
+                // result = result * (1 + interestRate);
+
+                for(int i = 1; i < TotalPurchased; i++){
+                    result = result * (1 + interestRate);
+                }
+            // }
+
+            Debug.Log(UpgradeButton.name + " UpgradeCust " + result.ToString("F2"));
+            // Debug.Log(result);
+            return result;
+        }
     }
 
-    public int UpgradeIncrease {
+    public double UpgradeIncrease {
         get { return UpgradeBaseIncrease; }
     }
 
@@ -74,11 +90,11 @@ public class UpgradeButtonController : MonoBehaviour {
     }
 
     private void handleButtonTextValues() {
-        UpgradeCostText.text = "$ " + UpgradeCost;
+        UpgradeCostText.text = "$ " + UpgradeCost.ToString("F2");
         if(IsIddleGain){
-            UpgradeIncreaseText.text = "Iddle\n+" + UpgradeIncrease + " /s";
+            UpgradeIncreaseText.text = "Iddle\n+" + UpgradeIncrease.ToString("F2") + " /s";
         } else {
-            UpgradeIncreaseText.text = "Click\n+ " + UpgradeIncrease;
+            UpgradeIncreaseText.text = "Click\n+ " + UpgradeIncrease.ToString("F2");
         }
     }
 
