@@ -24,11 +24,15 @@ public class UpgradeButtonController : MonoBehaviour {
             double interestRate = UpgradeCostInterestRate/100;
 
             // if(TotalPurchased != null && TotalPurchased > 0){
-                // result = result * (1 + interestRate);
 
-                for(int i = 1; i < TotalPurchased; i++){
+            // if (TotalPurchased == 1) {
+            //     result = result * (1 + interestRate);
+            // } if (TotalPurchased > 1) {
+                for(int i = 1; i < TotalPurchased+1; i++) {
                     result = result * (1 + interestRate);
                 }
+            // }
+
             // }
 
             Debug.Log(UpgradeButton.name + " UpgradeCust " + result.ToString("F2"));
