@@ -383,7 +383,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 820995034}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -472,9 +472,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 38963638}
-        m_TargetAssemblyTypeName: Game, Assembly-CSharp
-        m_MethodName: Increment
+      - m_Target: {fileID: 701099864}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: IncrementCodeLines
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -498,7 +498,7 @@ GameObject:
   - component: {fileID: 38963634}
   - component: {fileID: 38963638}
   m_Layer: 5
-  m_Name: Game
+  m_Name: Game Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,10 +602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac95d22cda1eec74ab4949316b6840cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  codeParticleSystem: {fileID: 663056216}
-  TotalMoney: {fileID: 1933932141}
-  ClickPower: {fileID: 242832332}
-  IddleGain: {fileID: 240001834}
 --- !u!1 &40919614
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,7 +1013,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c76501d6a827349a0aaf644f5aae0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsIddleGain: 1
+  IsIdleGain: 0
   UpgradeButton: {fileID: 69271991}
   UpgradeCostText: {fileID: 201191541}
   UpgradeIncreaseText: {fileID: 1845054354}
@@ -1209,7 +1205,7 @@ GameObject:
   - component: {fileID: 111624032}
   - component: {fileID: 111624033}
   m_Layer: 0
-  m_Name: OfflineManager
+  m_Name: Offline Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1456,6 +1452,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170347551}
   m_CullTransparentMesh: 1
+--- !u!1 &184767386
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 184767387}
+  - component: {fileID: 184767388}
+  m_Layer: 0
+  m_Name: Code Lines Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &184767387
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184767386}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1708278912}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &184767388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 184767386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34feb53a9a888434c965f0b2be95461e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &188405527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1691,8 +1730,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 820995034}
-  m_RootOrder: 1
+  m_Father: {fileID: 1304156269}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -2063,7 +2102,7 @@ GameObject:
   - component: {fileID: 242832333}
   - component: {fileID: 242832332}
   m_Layer: 5
-  m_Name: Click Power
+  m_Name: Code Lines Click Power
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2082,7 +2121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14426006, g: 0.8584906, b: 0.0040494935, a: 1}
+  m_Color: {r: 0.003921569, g: 0.0627451, b: 0.85882354, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2102,9 +2141,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Click Power
+  m_Text: 'Code Lines Click Power
 
-    $ 0'
+    0'
 --- !u!222 &242832333
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2125,12 +2164,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 820995034}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035, y: -226.94}
-  m_SizeDelta: {x: 396.44202, y: 163.882}
+  m_AnchoredPosition: {x: -0.000061035, y: -273.2}
+  m_SizeDelta: {x: 396.44, y: 256.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &243042592
 GameObject:
@@ -2938,7 +2977,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c76501d6a827349a0aaf644f5aae0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsIddleGain: 1
+  IsIdleGain: 0
   UpgradeButton: {fileID: 520658655}
   UpgradeCostText: {fileID: 1515272866}
   UpgradeIncreaseText: {fileID: 1655448689}
@@ -3187,7 +3226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c76501d6a827349a0aaf644f5aae0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsIddleGain: 0
+  IsIdleGain: 0
   UpgradeButton: {fileID: 520929963}
   UpgradeCostText: {fileID: 894086745}
   UpgradeIncreaseText: {fileID: 776134667}
@@ -8311,6 +8350,49 @@ Transform:
   m_Father: {fileID: 1747612308}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &701099863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 701099865}
+  - component: {fileID: 701099864}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &701099864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701099863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 480f01a0d24edba4c894bc2837a93bc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &701099865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 701099863}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1708278912}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -8713,7 +8795,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c76501d6a827349a0aaf644f5aae0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsIddleGain: 0
+  IsIdleGain: 0
   UpgradeButton: {fileID: 777969828}
   UpgradeCostText: {fileID: 1764887052}
   UpgradeIncreaseText: {fileID: 1212595548}
@@ -8721,6 +8803,55 @@ MonoBehaviour:
   UpgradeBaseCost: 25
   UpgradeCostInterestRate: 1
   TotalPurchased: 0
+--- !u!1 &782743356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 782743357}
+  - component: {fileID: 782743358}
+  m_Layer: 0
+  m_Name: UI and Particle Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &782743357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782743356}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1708278912}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &782743358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 782743356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f92ebfe2911239488748236eb66344b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  codeParticleSystem: {fileID: 663056216}
+  TotalMoney: {fileID: 1933932141}
+  MoneyIdleGain: {fileID: 1347442117}
+  TotalCodeLines: {fileID: 205963841}
+  CodeLinesClickPower: {fileID: 242832332}
+  CodeLinesIdleGain: {fileID: 1347442117}
 --- !u!1 &820995033
 GameObject:
   m_ObjectHideFlags: 0
@@ -8738,7 +8869,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &820995034
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8751,8 +8882,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1304156269}
-  - {fileID: 205963840}
-  - {fileID: 1347442116}
   - {fileID: 12639191}
   - {fileID: 242832334}
   - {fileID: 1750121571}
@@ -9534,6 +9663,8 @@ RectTransform:
   m_Children:
   - {fileID: 1933932140}
   - {fileID: 240001836}
+  - {fileID: 205963840}
+  - {fileID: 1347442116}
   m_Father: {fileID: 820995034}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9632,12 +9763,12 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 820995034}
-  m_RootOrder: 2
+  m_Father: {fileID: 1304156269}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 195.15002, y: 1700.53}
+  m_AnchoredPosition: {x: 195.15002, y: 63.77002}
   m_SizeDelta: {x: 390.3, y: 127.55005}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1347442117
@@ -9893,7 +10024,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c76501d6a827349a0aaf644f5aae0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsIddleGain: 1
+  IsIdleGain: 0
   UpgradeButton: {fileID: 1392205739}
   UpgradeCostText: {fileID: 1387588885}
   UpgradeIncreaseText: {fileID: 1724566144}
@@ -10456,7 +10587,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1708278912}
   m_Layer: 0
-  m_Name: Scripts
+  m_Name: Common Scripts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10474,6 +10605,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 111624032}
+  - {fileID: 701099865}
+  - {fileID: 782743357}
+  - {fileID: 184767387}
+  - {fileID: 2141853426}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10759,7 +10894,7 @@ RectTransform:
   - {fileID: 520929962}
   - {fileID: 1801527355}
   m_Father: {fileID: 820995034}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0.25}
@@ -11142,7 +11277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c76501d6a827349a0aaf644f5aae0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsIddleGain: 0
+  IsIdleGain: 0
   UpgradeButton: {fileID: 1801527356}
   UpgradeCostText: {fileID: 1574889033}
   UpgradeIncreaseText: {fileID: 527706495}
@@ -11622,7 +11757,7 @@ RectTransform:
   - {fileID: 726059872}
   - {fileID: 1859822940}
   m_Father: {fileID: 820995034}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -11865,7 +12000,7 @@ RectTransform:
   - {fileID: 1475588605}
   - {fileID: 170347552}
   m_Father: {fileID: 820995034}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0.25}
@@ -11943,3 +12078,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049691101}
   m_CullTransparentMesh: 1
+--- !u!1 &2141853425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2141853426}
+  - component: {fileID: 2141853427}
+  m_Layer: 0
+  m_Name: Money Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2141853426
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141853425}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1708278912}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2141853427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2141853425}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b2ec79a95148bc4e91c85ac9458afbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

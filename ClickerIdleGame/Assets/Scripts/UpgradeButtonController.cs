@@ -5,7 +5,7 @@ using BreakInfinity;
 
 public class UpgradeButtonController : MonoBehaviour {
 
-    public bool IsIddleGain;
+    public bool IsIdleGain;
     public Button UpgradeButton;
     public Text UpgradeCostText;
     public Text UpgradeIncreaseText;
@@ -77,7 +77,7 @@ public class UpgradeButtonController : MonoBehaviour {
 
         GameManager.Money -= UpgradeCost;
 
-        if(IsIddleGain){
+        if(IsIdleGain){
             HandleIdleGainIncrease();
         } else {
             HandleClickPowerIncrease();
@@ -89,13 +89,13 @@ public class UpgradeButtonController : MonoBehaviour {
     }
 
     private void HandleClickPowerIncrease() {
-        GameManager.ClickPower += UpgradeBaseIncrease;
-        SaveManager.SaveClickPower();
+        GameManager.MoneyClickPower += UpgradeBaseIncrease;
+        SaveManager.SaveMoneyClickPower();
     }
 
     private void handleButtonTextValues() {
         UpgradeCostText.text = "$ " + UpgradeCost.ToString("F2");
-        if(IsIddleGain){
+        if(IsIdleGain){
             UpgradeIncreaseText.text = "Iddle\n+" + UpgradeIncrease.ToString("F2") + " /s";
         } else {
             UpgradeIncreaseText.text = "Click\n+ " + UpgradeIncrease.ToString("F2");

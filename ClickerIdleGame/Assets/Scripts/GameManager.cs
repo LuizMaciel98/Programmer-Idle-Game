@@ -3,69 +3,87 @@ using UnityEngine.UI;
 using UnityEngine;
 using BreakInfinity;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
 
-    private static BigDouble _IdleGain;
-    private static bool hasIdleBeenChecked = false;
-
-    public static BigDouble Money;
-    public static BigDouble ClickPower;
-    public static BigDouble IddleGain {
+    public static BigDouble Money {
         get {
-            if(!hasIdleBeenChecked) {
-                _IdleGain = UpdateIdleGain();
-                hasIdleBeenChecked = true;
-            }
-
-            return _IdleGain;
+            return MoneyManager.Money;
+        }
+        set {
+            MoneyManager.Money = value;
         }
     }
 
-    // Start is called before the first frame update
-    void Start() {
-        Money = SaveManager.LoadMoney();
-        ClickPower = SaveManager.LoadClickPower();
+    public static BigDouble MoneyClickPower {
+        get {
+            return MoneyManager.ClickPower;
+        }
+        set {
+            MoneyManager.ClickPower = value;
+        }
+    }
+
+    public static BigDouble MoneyIdleGain {
+        get {
+            return MoneyManager.IdleGain;
+        }
+        // set {
+        //     MoneyManager.IdleGain = value;
+        // }
+    }
+
+    public static BigDouble CodeLines {
+        get {
+            return CodeLinesManager.CodeLines;
+        }
+        set {
+            CodeLinesManager.CodeLines = value;
+        }
+    }
+
+    public static BigDouble CodeLinesClickPower {
+        get {
+            return CodeLinesManager.ClickPower;
+        }
+        set {
+            CodeLinesManager.ClickPower = value;
+        }
+    }
+
+    public static BigDouble CodeLinesIdleGain {
+        get {
+            return CodeLinesManager.IdleGain;
+        }
+        // set {
+        //     CodeLinesManager.IdleGain = value;
+        // }
+    }
+
+    public static void UpdateIdleGain() {
+        //TODO
+    }
+
+    public static bool HasAnyIdleGains(){
+        //TODO
+        return false;
+    }
+
+    public static void IncrementCodeLines() {
+
+        Debug.Log(CodeLines);
+        Debug.Log(CodeLinesClickPower);
+
+        CodeLines += CodeLinesClickPower;
+        SaveManager.SaveCodeLines();
+
+        UIAndParticlesManager UIParticleManager = GameObject.Find("UI and Particle Manager").GetComponent<UIAndParticlesManager>();
+        UIParticleManager.EmitCodeParticle();
     }
 
     public void Update() {
 
-        if(IddleGain > 0) {
-            Money += IddleGain * Time.deltaTime;
-            SaveManager.SaveMoney();
-        }
-
         if(Input.GetKeyDown(KeyCode.R)) {
             PlayerPrefs.DeleteAll();
         }
-    }
-
-    public static BigDouble UpdateIdleGain(){
-        Debug.Log("UpdateIdleGain");
-        BigDouble result = 0;
-
-        var buttonObject = FindObjectsOfType<Button>();
-        for(int i = 0; i < buttonObject.Length; i ++){
-            var button = buttonObject[i];
-            UpgradeButtonController UpgradeButton = button.GetComponent<UpgradeButtonController>();
-            if(UpgradeButton != null && UpgradeButton.IsIddleGain && UpgradeButton.TotalPurchased > 0){
-                Debug.Log(button.name);
-                Debug.Log(UpgradeButton.TotalPurchased);
-                Debug.Log(UpgradeButton.UpgradeIncrease);
-                result += UpgradeButton.TotalPurchased * UpgradeButton.UpgradeIncrease;
-            }
-        }
-
-        Debug.Log("UpdateIdleGain result : " + result);
-
-        _IdleGain = result;
-
-        return result;
-    }
-
-    public static bool HasAnyIdleGains() {
-        Debug.Log("GameManager.HasAnyIdleGains");
-        Debug.Log("IddleGain > 0 : " + (IddleGain > 0));
-        return IddleGain > 0;
     }
 }

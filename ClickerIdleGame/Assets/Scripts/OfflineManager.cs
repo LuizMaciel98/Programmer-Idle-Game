@@ -42,7 +42,7 @@ public class OfflineManager : MonoBehaviour {
 
             AwayTimeText.text = $"You were away for\n<color=#00FFFF>{Timer:dd\\:hh\\:mm\\:ss}</color>";
 
-            BigDouble MoneyGains = RawTime * GameManager.IddleGain;
+            BigDouble MoneyGains = RawTime * GameManager.MoneyIdleGain;
 
             String MoneyGainsText = MoneyGains.ToString("F0");
 
