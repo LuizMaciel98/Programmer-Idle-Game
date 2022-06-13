@@ -5,8 +5,6 @@ using BreakInfinity;
 
 public class GameManager : MonoBehaviour {
 
-    public static string currentProject;
-
     public static BigDouble Money {
         get {
             return MoneyManager.Money;
@@ -61,6 +59,33 @@ public class GameManager : MonoBehaviour {
         // }
     }
 
+    public static BigDouble ProjectCodeLinePrice {
+        get {
+            return ProjectManager.CodeLinePrice;
+        }
+        set {
+            ProjectManager.CodeLinePrice = value;
+        }
+    }
+
+    public static BigDouble ProjectMoneyEarning {
+        get {
+            return ProjectManager.MoneyEarning;
+        }
+        set {
+            ProjectManager.MoneyEarning = value;
+        }
+    }
+
+    public static string CurrentProject {
+        get {
+            return ProjectManager.SelectedProject;
+        }
+        set {
+            ProjectManager.SelectedProject = value;
+        }
+    }
+
     public static void UpdateIdleGain() {
         //TODO
     }
@@ -74,9 +99,14 @@ public class GameManager : MonoBehaviour {
         ErrorManager errorMessage = GameObject.Find("Error Manager").GetComponent<ErrorManager>();
 
         if(HasAnySelectedProject()) {
+
+
             errorMessage.solveMissingSelectedProject();
             CodeLines += CodeLinesClickPower;
             SaveManager.SaveCodeLines();
+
+            ProgressBarController.IncrementProgress();
+            MakeProject();
 
             UIAndParticlesManager UIParticleManager = GameObject.Find("UI and Particle Manager").GetComponent<UIAndParticlesManager>();
             UIParticleManager.EmitCodeParticle();
@@ -92,7 +122,20 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    private static void MakeProject() {
+        if(CodeLines >= ProjectCodeLinePrice) {
+            CodeLines -= ProjectCodeLinePrice;
+            Money += ProjectMoneyEarning;
+
+            if(CodeLines > 0) {
+                ProgressBarController.IncrementProgress();
+            } else {
+                ProgressBarController.FinishProject();
+            }
+        }
+    }
+
     private static bool HasAnySelectedProject() {
-        return currentProject != null && currentProject != "";
+        return CurrentProject != null && CurrentProject != "";
     }
 }
