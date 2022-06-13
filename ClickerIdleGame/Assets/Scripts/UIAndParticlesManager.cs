@@ -22,7 +22,7 @@ public class UIAndParticlesManager : MonoBehaviour {
 
         TotalCodeLines.text = "Code Lines: " + GameManager.CodeLines.ToString("F0");
         CodeLinesClickPower.text = "Code Lines\nClick Power:\n" + GameManager.CodeLinesClickPower.ToString("F0");
-        CodeLinesIdleGain.text = GameManager.CodeLinesIdleGain.ToString("F0") + "Code Lines\nPer Second";
+        CodeLinesIdleGain.text = GameManager.CodeLinesIdleGain.ToString("F0") + " Code Lines\nPer Second";
     }
 
     public void EmitCodeParticle() {

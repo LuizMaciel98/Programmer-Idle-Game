@@ -42,6 +42,8 @@ public class PrincipalMenuController : MonoBehaviour, IPointerEnterHandler, IPoi
     }
 
     public void OpenPage() {
-        ChangeIsSelected();
+        if(isSelected == true) {
+            ChangeIsSelected();
+        }
     }
 }

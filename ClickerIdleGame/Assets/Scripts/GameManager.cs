@@ -5,6 +5,8 @@ using BreakInfinity;
 
 public class GameManager : MonoBehaviour {
 
+    public static string currentProject;
+
     public static BigDouble Money {
         get {
             return MoneyManager.Money;
@@ -69,15 +71,18 @@ public class GameManager : MonoBehaviour {
     }
 
     public static void IncrementCodeLines() {
+        ErrorManager errorMessage = GameObject.Find("Error Manager").GetComponent<ErrorManager>();
 
-        Debug.Log(CodeLines);
-        Debug.Log(CodeLinesClickPower);
+        if(HasAnySelectedProject()) {
+            errorMessage.solveMissingSelectedProject();
+            CodeLines += CodeLinesClickPower;
+            SaveManager.SaveCodeLines();
 
-        CodeLines += CodeLinesClickPower;
-        SaveManager.SaveCodeLines();
-
-        UIAndParticlesManager UIParticleManager = GameObject.Find("UI and Particle Manager").GetComponent<UIAndParticlesManager>();
-        UIParticleManager.EmitCodeParticle();
+            UIAndParticlesManager UIParticleManager = GameObject.Find("UI and Particle Manager").GetComponent<UIAndParticlesManager>();
+            UIParticleManager.EmitCodeParticle();
+        } else {
+            errorMessage.triggerMissingSelectedProject();
+        }
     }
 
     public void Update() {
@@ -85,5 +90,9 @@ public class GameManager : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.R)) {
             PlayerPrefs.DeleteAll();
         }
+    }
+
+    private static bool HasAnySelectedProject() {
+        return currentProject != null && currentProject != "";
     }
 }
