@@ -16,6 +16,7 @@ public class UIAndParticlesManager : MonoBehaviour {
     public Text CodeLinesIdleGain;
 
     public Text projectSelected;
+    public Text projectButtonText;
 
     void Update() {
         TotalMoney.text = "$: " + GameManager.Money.ToString("F2");
@@ -31,8 +32,10 @@ public class UIAndParticlesManager : MonoBehaviour {
 
     private void handleProjectSelect() {
         if(GameManager.CurrentProject == null || GameManager.CurrentProject == "") {
+            projectButtonText.text = "Choose\nProject";
             projectSelected.text = "Please Select a project!";
         } else {
+            projectButtonText.text = "Change\nProject";
             projectSelected.text = "Making Project:\n" + GameManager.CurrentProject;
         }
     }

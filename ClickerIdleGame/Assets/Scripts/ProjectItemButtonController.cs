@@ -38,6 +38,8 @@ public class ProjectItemButtonController : MonoBehaviour {
         ProjectManager.MoneyEarning = MoneyEarning;
 
         SaveManager.SaveCurrentProject();
+        SaveManager.SaveCurrentProjectCodeLinePrice();
+        SaveManager.SaveCurrentProjectMoneyEarning();
     }
 
 }

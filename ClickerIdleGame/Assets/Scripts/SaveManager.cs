@@ -18,21 +18,21 @@ public class SaveManager : MonoBehaviour {
     private const string CURRENT_PROJECT_MONEY_EARNING = "currentProjectMoneyEarning";
 
     public static void SaveMoney() {
-        PlayerPrefs.SetString(MONEY, GameManager.Money.ToString());
+        SaveBigDouble(MONEY, GameManager.Money);
         PlayerPrefs.SetString(OFFLINE_TIME, DateTime.Now.ToBinary().ToString());
     }
 
     public static void SaveMoneyClickPower() {
-        PlayerPrefs.SetString(MONEY_CLICKPOWER, GameManager.MoneyClickPower.ToString());
+        SaveBigDouble(MONEY_CLICKPOWER, GameManager.MoneyClickPower);
     }
 
     public static void SaveCodeLines() {
-        PlayerPrefs.SetString(CODE_LINES, GameManager.CodeLines.ToString());
+        SaveBigDouble(CODE_LINES, GameManager.CodeLines);
         PlayerPrefs.SetString(OFFLINE_TIME, DateTime.Now.ToBinary().ToString());
     }
 
     public static void SaveCodeLinesClickPower() {
-        PlayerPrefs.SetString(CODE_CLICK_POWER, GameManager.MoneyClickPower.ToString());
+        SaveBigDouble(CODE_CLICK_POWER, GameManager.MoneyClickPower);
     }
 
     public static void SaveCurrentProject() {
@@ -40,27 +40,27 @@ public class SaveManager : MonoBehaviour {
     }
 
     public static void SaveCurrentProjectCodeLinePrice() {
-        PlayerPrefs.SetString(CURRENT_PROJECT_CODE_LINE_PRICE, GameManager.ProjectCodeLinePrice.ToString());
+        SaveBigDouble(CURRENT_PROJECT_CODE_LINE_PRICE, GameManager.ProjectCodeLinePrice);
     }
 
     public static void SaveCurrentProjectMoneyEarning() {
-        PlayerPrefs.SetString(CURRENT_PROJECT_MONEY_EARNING, GameManager.ProjectMoneyEarning.ToString());
+        SaveBigDouble(CURRENT_PROJECT_MONEY_EARNING, GameManager.ProjectMoneyEarning);
     }
 
     public static BigDouble LoadMoney() {
-        return (BigDouble) Convert.ToDouble(PlayerPrefs.GetString(MONEY, "0"));
+        return LoadBigDouble(MONEY, "0");
     }
 
     public static BigDouble LoadMoneyClickPower() {
-        return (BigDouble) Convert.ToDouble(PlayerPrefs.GetString(MONEY_CLICKPOWER, "1"));
+        return LoadBigDouble(MONEY_CLICKPOWER, "1");
     }
 
     public static BigDouble LoadCodeLines() {
-        return (BigDouble) Convert.ToDouble(PlayerPrefs.GetString(CODE_LINES, "0"));
+        return LoadBigDouble(CODE_LINES, "0");
     }
 
     public static BigDouble LoadCodeLinesClickPower() {
-        return (BigDouble) Convert.ToDouble(PlayerPrefs.GetString(CODE_CLICK_POWER, "1"));
+        return LoadBigDouble(CODE_CLICK_POWER, "1");
     }
 
     public static String LoadCurrentProject() {
@@ -68,10 +68,18 @@ public class SaveManager : MonoBehaviour {
     }
 
     public static BigDouble LoadCurrentProjectCodeLinePrice() {
-        return (BigDouble) Convert.ToDouble(PlayerPrefs.GetString(CURRENT_PROJECT_CODE_LINE_PRICE, "0"));
+        return LoadBigDouble(CURRENT_PROJECT_CODE_LINE_PRICE, "0");
     }
 
     public static BigDouble LoadCurrentProjectMoneyEarning() {
-        return (BigDouble) Convert.ToDouble(PlayerPrefs.GetString(CURRENT_PROJECT_MONEY_EARNING, "0"));
+        return LoadBigDouble(CURRENT_PROJECT_MONEY_EARNING, "0");
+    }
+
+    private static void SaveBigDouble(String PrefsName, BigDouble SaveValue) {
+        PlayerPrefs.SetString(PrefsName, SaveValue.ToString());
+    }
+
+    private static BigDouble LoadBigDouble(String PrefsName, String DefaultValue) {
+        return (BigDouble) Convert.ToDouble(PlayerPrefs.GetString(PrefsName, DefaultValue).Replace(".", ","));
     }
 }
